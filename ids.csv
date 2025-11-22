@@ -1,0 +1,20 @@
+genre,id
+Drama,0
+Horror,1
+Fantasy,2
+Action,3
+Thriller,4
+Crime,5
+Adventure,6
+Science Fiction,7
+Comedy,8
+Family,9
+Romance,10
+Animation,11
+Mystery,12
+Music,13
+Western,14
+War,15
+History,16
+Documentary,17
+TV Movie,18
