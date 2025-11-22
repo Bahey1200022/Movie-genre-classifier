@@ -1,13 +1,15 @@
 import csv
+import ast 
+import pandas as pd
 class FilmdataLoader():
-    def __init__(self,csv_path,poster_path):
+    def __init__(self,csv_path,poster_dir):
         self.data=list()
-        self.poster=poster_path
-        with open("file.csv", "r", encoding="utf-8") as f:
-            reader = csv.reader(f)
-            
-            for row in reader :
-                self.data.append((row[0],row[1]))
+        self.poster=poster_dir
+        df=pd.read_csv(csv_path, index_col=False)
+        for row in df.iterrows():
+            genre_list = ast.literal_eval(row[1]['genres'])
+            self.data.append((row[1]['path'],genre_list))
+        
     def __len__(self):
         return len(self.data)    
     

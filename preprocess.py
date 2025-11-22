@@ -1,6 +1,6 @@
 import pandas as pd
 import ast
-csv="final.csv"
+csv="films.csv"
 df=pd.read_csv("output.csv")
 ids=pd.read_csv("ids.csv")
 finaldf=pd.DataFrame(columns=['path','genres'])
@@ -14,7 +14,7 @@ for i, row in df.iterrows():
         
     finaldf.loc[i]=[row[0],filmlist]
     
-finaldf.to_csv(csv)   
+finaldf.to_csv(csv,index=False)   
 
     
     
