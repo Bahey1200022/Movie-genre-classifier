@@ -138,9 +138,7 @@ checkpoint = {
 torch.save(checkpoint, CHECKPOINT_PATH)
 print(f"Checkpoint saved to {CHECKPOINT_PATH}")
 
-# -----------------------------
-# Testing (optional)
-# -----------------------------
+
 clip_model.eval()
 classifier.eval()
 test_loss = 0.0
@@ -151,6 +149,10 @@ with torch.no_grad():
         features = clip_model.get_image_features(**inputs)
         logits = classifier(features)
         loss = loss_fn(logits, labels)
+        # accuracy calculation
+        preds = logits.sigmoid() > 0.5
+        correct = (preds == labels).sum().item()
+        accuracy = correct / labels.numel()
         test_loss += loss.item()
 avg_test_loss = test_loss / len(test_loader)
-print(f"Test Loss: {avg_test_loss:.4f}")
+print(f"Test Loss: {avg_test_loss:.4f} | Test Accuracy: {accuracy:.4f}")
