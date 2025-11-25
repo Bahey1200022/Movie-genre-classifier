@@ -1,0 +1,8 @@
+Welcome to the movie poster genre classifier 
+
+Approach of this project :
+
+CLIP model fine tuned with LoRA 
+
+Fine tuning done with the TMBD movie dataset 
+
